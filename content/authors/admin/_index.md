@@ -3,11 +3,11 @@
 title: 吳健雄
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: Pietro Dardano
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Pietro
+last_name: Dardano
 
 # Status emoji
 status:
@@ -20,135 +20,147 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Chief Scientist
+role: PhD Candidate in AI and Robotics
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: OpenAI
-    url: https://openai.com/
+  - name: BMW AI Robotics
+    url: https://www.bmwgroup.com/en/innovation.html
+  - name: TU Eindhoven
+    url: https://www.tue.nl/en/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'mailto:your-email@example.com'
+    url: 'mailto:dardanopietro@libero.it'
     label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/GetResearchDev
-  - icon: brands/instagram
-    url: https://www.instagram.com/
+  # - icon: brands/x
+  #   url: https://x.com/pietro_dardano
   - icon: brands/github
-    url: https://github.com/gcushen
+    url: https://github.com/pietrodardano
   - icon: brands/linkedin
-    url: https://www.linkedin.com/
+    url: https://www.linkedin.com/in/pietro-dardano/
   - icon: academicons/google-scholar
-    url: https://scholar.google.com/
+    url: https://scholar.google.com/citations?hl=en&user=mz6A_oMAAAAJ
   - icon: academicons/orcid
-    url: https://orcid.org/
+    url: https://orcid.org/0009-0007-3222-7153
+  # - icon: cv
+  #   icon_pack: ai
+  #   link: uploads/resume.pdf
 
+# Interests
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - AI for Robotics
+  - Multimodal Perception
+  - Manipulation and Interaction Adaptation
+  - Reinforcement Learning
 
+
+# Education
 education:
-  - area: PhD Artificial Intelligence
-    institution: Stanford University
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - area: PhD Robotics
+    institution: Technology University of Eindhoven & BMW AI Robotics
+    date_start: 2025-02-17
+    date_end: ""
     summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
-    button:
-      text: 'Read Thesis'
-      url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.8/4.0
+      Research focuses on multimodal perception and learning for robots, emphasizing object manipulation, environment interaction, and adaptive behaviors. Parallel work involves human-vehicle interaction.
 
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - area: MSc. Automation and Control Engineering
+    institution: Politecnico di Milano
+    date_start: 2021-09-10
+    date_end: 2024-10-10
     summary: |
-      GPA: 3.4/4.0
-      
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      GPA 3.78/4.0. Specialized in Machine Learning, IoT, Autonomous Vehicles, Advanced Control and Robotics, with additional expertise in Power Electronics.
+
+  - area: BSc. Automation Engineering
+    institution: Politecnico di Milano
+    date_start: 2018-09-04
+    date_end: 2021-09-21
+    summary: |
+      GPA 3.41/4.0. Gained strong fundamentals in control, robotics, embedded systems, industrial automation, sensor technology, and signal processing.
+
+# Work Experience
 work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
-    company_url: ''
-    company_logo: ''
-    date_start: 2021-01-01
-    date_end: ''
-    summary: |2-
-      Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ''
-    company_logo: ''
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - position: Research Intern - Master Thesis
+    company_name: TXT E-TECH
+    company_url: null
+    company_logo: null
+    date_start: 2023-09-04
+    date_end: 2024-10-18
     summary: |
-      Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      Developed a tactile-driven validation system for cobots in aircraft testing, integrating Explainable AI (XAI) to enhance model interpretability. Migrated the system framework from ROS1 to ROS2, implementing hybrid CNNs with Grad-CAM for supervised deep learning. Achieved a classification F1-score of 96%-99.2%.
+
+  - position: Research Intern - Reinforced Learning
+    company_name: University of Trento
+    company_url: null
+    company_logo: null
+    date_start: 2024-06-03
+    date_end: 2024-11-01
+    summary: |
+      Designed and implemented PPO-based Walk and Stop policies for a quadruped robot. Conducted training in Nvidia IsaacSim + IsaacLab and integrated it with the Unitree AlienGo platform. Research contributed to an upcoming publication submitted to IROS 2025.
+
+  - position: Student Researcher
+    company_name: Politecnico di Milano
+    company_url: null
+    company_logo: null
+    date_start: 2023-04-01
+    date_end: 2025-01-31
+    summary: |
+      Developed an actuated rig to simulate wind disturbances and collision events for drone stability testing. Integrated sensor fusion from IMUs, gyroscopes, and Hall effect sensors, contributing to improved system behavior prediction.
+
+  - position: Co-Founder & Arbitrator (Former Head of Projects, Vice & President)
+    company_name: Automation Engineering Association (AEA)
+    company_url: null
+    company_logo: null
+    date_start: 2020-09-01
+    date_end: ""
+    summary: |
+      Co-founded the Automation Engineering Association (AEA) at Politecnico di Milano, driving student involvement in robotics and automation. Served in leadership roles, including Head of Projects (2021), Vice President (2022), and President (2022-2023), before transitioning to the Arbitrator role. Led national expansion efforts, supervised over 110 students in research projects, and organized technical workshops and industry collaborations.
+
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
+
+# Skills
 skills:
   - name: Technical Skills
     items:
       - name: Python
-        description: ''
         percent: 80
         icon: code-bracket
-      - name: Data Science
-        description: ''
+      - name: C++
         percent: 100
         icon: chart-bar
-      - name: SQL
-        description: ''
+      - name: ROS
         percent: 40
         icon: circle-stack
   - name: Hobbies
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Hiking
-        description: ''
+      - name: Powerlifting
         percent: 60
         icon: person-simple-walk
-      - name: Cats
-        description: ''
+      - name: Drummer
         percent: 100
         icon: cat
-      - name: Photography
-        description: ''
+      - name: Enduro and Downhill
         percent: 80
         icon: camera
 
-languages:
-  - name: English
-    percent: 100
-  - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
 
+# Languages
+languages:
+  - name: Italian
+    percent: 100
+  - name: English
+    percent: 80
+  - name: Spanish
+    percent: 60
+  - name: German
+    percent: 10
+    
 # Awards.
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
