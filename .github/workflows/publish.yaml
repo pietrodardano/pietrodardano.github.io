@@ -71,7 +71,7 @@ jobs:
       - name: Generate Pagefind search index
         run: npx pagefind --site "public"
 
-        - name: Debug: Check Public Directory
+      - name: Check Public Directory
         run: |
             echo "Checking total size of public/..."
             du -sh public/ || echo "public/ directory not found"
