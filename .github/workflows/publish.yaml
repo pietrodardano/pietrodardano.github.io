@@ -71,6 +71,21 @@ jobs:
       - name: Generate Pagefind search index
         run: npx pagefind --site "public"
 
+        - name: Debug: Check Public Directory
+        run: |
+            echo "Checking total size of public/..."
+            du -sh public/ || echo "public/ directory not found"
+            
+            echo "Listing all files in public/..."
+            ls -lah public/ || echo "public/ directory not found"
+            
+            echo "Checking for symlinks in public/..."
+            find public/ -type l -exec ls -lah {} \; || echo "No symlinks found."
+            
+            echo "Checking for hard links in public/..."
+            find public/ -type f -links +1 -exec ls -lah {} \; || echo "No hard links found."
+
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
