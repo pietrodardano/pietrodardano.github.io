@@ -56,6 +56,18 @@ jobs:
       - name: Check Artifact Size
         run: du -sh public/ 
 
+      - name: Check for Hard Links and Symlinks
+        run: |
+          echo "Checking for symlinks and hard links in the public/ directory..."
+          find public/ -type l -exec ls -lh {} \; || echo "No symlinks found."
+          find public/ -samefile public/ -exec ls -lh {} \; || echo "No hard links found."
+
+      - name: Remove Hard Links and Symlinks (if needed)
+        run: |
+          find public/ -type l -delete
+          rsync -a --copy-links public/ public_clean/
+          mv public_clean/ public/
+
       - name: Generate Pagefind search index
         run: npx pagefind --site "public"
 
