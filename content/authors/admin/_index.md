@@ -1,9 +1,9 @@
 ---
 # Display name
-title: 吳健雄
+title: Pietro Dardano
 
 # Name pronunciation (optional)
-name_pronunciation: Pietro Dardano
+name_pronunciation: ''
 
 # Full name (for SEO)
 first_name: Pietro
@@ -53,8 +53,10 @@ profiles:
 interests:
   - AI for Robotics
   - Multimodal Perception
-  - Manipulation and Interaction Adaptation
+  - Manipulation
+  - Adaptive behaviour 
   - Reinforcement Learning
+  - In-Vehicle Interaction
 
 
 # Education
@@ -195,8 +197,9 @@ languages:
 
 ## About Me
 
-I am a PhD Candidate at the BMW AI Robotics Lab, in collaboration with TU Eindhoven. My research focuses on multimodal perception and behavior adaptation for robots operating in dynamic and cluttered environments, particularly in human-robot interaction and adaptive manipulation.
+I am a PhD Candidate at the BMW AI Robotics Lab in collaboration with TU-Eindhoven. 
+My research focuses on multimodal perception and behavior adaptation for robots in dynamic, cluttered environments, particularly in human-robot interaction and adaptive manipulation.
 
-With a strong background in AI for robotics, reinforcement learning, and control engineering, I have worked on various projects involving autonomous systems, robotic perception, and decision-making. My previous research experiences spans from developing tactile-driven validation systems for aircraft testing to reinforcement learning for quadruped robots and actuated platforms for drone stability testing.
+With a background in AI for robotics, reinforcement learning, and control engineering, I have worked on projects involving autonomous systems, robotic perception, and decision-making. My experience includes developing tactile-driven validation systems for aircraft testing, reinforcement learning for quadruped robots, and actuated platforms for drone stability testing.
 
 I am committed to pushing the boundaries of robotic intelligence and automation. If you're interested in collaborating, feel free to reach out! 🚀
