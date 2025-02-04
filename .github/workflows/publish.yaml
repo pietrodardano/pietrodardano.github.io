@@ -91,7 +91,7 @@ jobs:
         with:
           name: github-pages
           path: ./public
-          overwrite: true  # Allows overwriting old artifacts
+        #  overwrite: true  # Allows overwriting old artifacts
 
   # Deploy website to GitHub Pages
   deploy:
