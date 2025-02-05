@@ -7,6 +7,9 @@
 appearance:
   mode: system
   color: blue
+  theme_day: minimal
+  theme_night: minimal
+  fontsize: L
 
 # SEO
 marketing:
@@ -59,3 +62,18 @@ features:
     enable: false
   privacy_pack:
     enable: false
+  avatar:
+    gravatar: false
+    shape: circle
+  map:
+    provider: 'mapnik'
+    api_key: ''
+    zoom: 15
+
+# Extensions
+extensions:
+  cms:
+    branch: main
+    local_backend: false
+  academicons:
+    enable: true
