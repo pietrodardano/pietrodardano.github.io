@@ -16,12 +16,12 @@ sections:
       text: ""
       # Show a call-to-action button under your biography? (optional)
       button:
-        text: Download CV
+        text: Download my CV
         url: uploads/resume.pdf
     design:
       css_class: dark
       background:
-        color: blue
+        color: cyan
         # image:
         #   # Add your image background to `assets/media/`.
         #   filename:  stacked-peaks.svg
