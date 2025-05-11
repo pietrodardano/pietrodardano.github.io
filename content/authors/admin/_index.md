@@ -63,9 +63,10 @@ interests:
 education:
   - area: PhD. Robotics
     institution: Technology University of Eindhoven & BMW AI Robotics
-    date_start: 2025-02-17
+    date_start: 2025-03-01
     date_end: ""
     summary: |
+      Topic: Robust multimodal perception and learning in robotics and intelligent vehicles.
       Research focuses on multimodal perception and learning for robots, emphasizing object manipulation, environment interaction, and adaptive behaviors. Parallel work involves human-vehicle interaction.
 
   - area: MSc. Automation and Control Engineering
@@ -73,7 +74,7 @@ education:
     date_start: 2021-09-10
     date_end: 2024-10-10
     summary: |
-      GPA 3.78/4.0. Specialized in Machine Learning, IoT, Autonomous Vehicles, Advanced Control and Robotics, with additional expertise in Power Electronics.
+      GPA 3.78/4.0. Main courses: Advanced Control, Robotics, Machine Learning, IoT, Autonomous Vehicles and Power Electronics.
 
   - area: BSc. Automation Engineering
     institution: Politecnico di Milano
@@ -84,6 +85,15 @@ education:
 
 # Work Experience
 work:
+  - position: Research Collaborator - Reinforced Learning
+    company_name: University of Trento
+    company_url: null
+    company_logo: null
+    date_start: 2025-04-01
+    date_end: ""
+    summary: |
+      Advancing previous research introduging  DDPG and TD3 based safety value functions, to ensure robustness and safety in RL-based policies for quadruped robots.
+
   - position: Research Intern - Reinforced Learning
     company_name: University of Trento
     company_url: null
