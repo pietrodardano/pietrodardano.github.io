@@ -6,7 +6,6 @@ title: 'Force-Driven Validation for Collaborative Robotics in Automated Avionics
 # and it will be replaced with their full name and linked to their profile.
 authors:
   - admin
-  - Pietro Dardano
   - Paolo Rocco
   - David Frisini
 
@@ -15,8 +14,8 @@ authors:
 #   - 'Equal contribution'
 #   - 'Equal contribution'
 
-date: '2013-07-02'
-doi: ''
+date: '2025-07-02'
+doi: 'https://doi.org/10.48550/arXiv.2505.10224'
 
 # Schedule page publish date (NOT publication's date).
 # publishDate: '2017-01-01T00:00:00Z'
@@ -24,11 +23,11 @@ doi: ''
 # Publication type.
 # Accepts a single type but formatted as a YAML list (for Hugo requirements).
 # Enter a publication type from the CSL standard.
-publication_types: ['paper-conference']
+publication_types: ['conference paper']
 
 # Publication name and optional abbreviated publication name.
-publication: In *Hugo Blox Builder Conference*
-publication_short: In *ICW*
+publication: 19th International Autonomous Systems Conference (IAS-19)
+publication_short: IAS-19
 
 abstract: ARTO is a project combining collaborative robots (cobots) and Artificial Intelligence (AI) to automate functional test procedures for civilian and military aircraft certification. This paper proposes a Deep Learning (DL) and eXplainable AI (XAI) approach, equipping ARTO with interaction analysis capabilities to verify and validate the operations on cockpit components. During these interactions, forces, torques, and end effector poses are recorded and preprocessed to filter disturbances caused by low performance force controllers and embedded Force Torque Sensors (FTS). Convolutional Neural Networks (CNNs) then classify the cobot actions as Success or Fail, while also identifying and reporting the causes of failure. To improve interpretability, Grad CAM, an XAI technique for visual explanations, is integrated to provide insights into the models decision making process. This approach enhances the reliability and trustworthiness of the automated testing system, facilitating the diagnosis and rectification of errors that may arise during testing.
 
