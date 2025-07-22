@@ -101,7 +101,7 @@ work:
     date_start: 2024-06-03
     date_end: 2024-11-01
     summary: |
-      Designed and implemented PPO-based Walk and Stop policies for a quadruped robot. Conducted training in Nvidia IsaacSim + IsaacLab and integrated it with the Unitree AlienGo platform. Research contributed to an upcoming publication to submit to IROS 2025.
+      Designed and implemented PPO-based Walk and Stop policies for a quadruped robot. Conducted training in Nvidia IsaacSim + IsaacLab for Sim2Real on Unitree's AlienGo.
 
   - position: Research Intern - Master Thesis
     company_name: TXT E-TECH
@@ -110,7 +110,7 @@ work:
     date_start: 2023-09-04
     date_end: 2024-10-18
     summary: |
-      Developed a tactile-driven validation system for cobots in aircraft testing, integrating Explainable AI (XAI) to enhance model interpretability. Migrated the system framework from ROS1 to ROS2, implementing hybrid CNNs with Grad-CAM for supervised deep learning. Achieved a classification F1-score of 96%-99.2%.
+      Force-Driven validation system for cobots in autonomous aircraft testing, integrating Explainable AI (XAI) to enhance model interpretability. Migrated the system framework from ROS1 to ROS2, implementing hybrid CNNs with Grad-CAM for supervised deep learning. Achieved a classification F1-score of 96%-99.2%.
 
   - position: Student Researcher
     company_name: Politecnico di Milano
@@ -119,7 +119,7 @@ work:
     date_start: 2023-04-01
     date_end: 2025-01-31
     summary: |
-      Developed an actuated rig to simulate wind disturbances and collision events for drone stability testing. Integrated sensor fusion from IMUs, gyroscopes, and Hall effect sensors, contributing to improved system behavior prediction.
+      Design and Control of an actuated rig to simulate wind disturbances and collision events for drone stability testing. Sensor fusion: IMUs, gyroscopes, and Hall effect sensors.
 
   - position: Co-Founder & Arbitrator (Former Head of Projects, Vice & President)
     company_name: Automation Engineering Association (AEA)
@@ -166,7 +166,7 @@ languages:
   - name: Italian
     percent: 100
   - name: English
-    percent: 80
+    percent: 85
   - name: Spanish
     percent: 70
   - name: German
@@ -177,8 +177,8 @@ languages:
 ## About Me
 
 I am a PhD Candidate at the BMW AI Robotics Lab in collaboration with TU-Eindhoven. 
-My research focuses on multimodal perception and behavior adaptation for robots in dynamic, cluttered environments, particularly in human-robot interaction and adaptive manipulation.
+My research focuses on multimodal perception and behavior adaptation for robots in dynamic, cluttered environments, human-robot and human-vehicle interaction.
 
-With a background in AI for robotics, reinforcement learning, and control engineering, I have worked on projects involving autonomous systems, robotic perception, and decision-making. My experience includes developing tactile-driven validation systems for aircraft testing, reinforcement learning for quadruped robots, and actuated platforms for drone stability testing.
+With a background in AI for robotics, reinforcement learning, and control engineering, I have worked on projects involving autonomous systems, robotic perception, and decision-making. My experience includes developing Force-Driven validation systems for autonomous aircraft testing, reinforcement learning for quadruped robots, and actuated platforms for drone stability testing.
 
-I am committed to pushing the boundaries of robotic intelligence and automation. If you're interested in collaborating, feel free to reach out! 🚀
+If you're interested in collaborating, feel free to reach out! 🚀
