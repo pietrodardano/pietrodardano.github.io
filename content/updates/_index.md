@@ -1,8 +1,26 @@
 ---
 title: Updates
-view: list
-# summary: Very brief daily updates about my work and activities.
----
+date: 2025-12-03
+type: landing
 
-- 2025-07-02: Presented my first paper at IAS-19 in Genova
-- 2025-04-15: My first paper got accepted at IAS-19
+design:
+  spacing: "2rem"
+
+sections:
+  - block: markdown
+    content:
+      title: 'Latest Updates'
+      text: |-
+        Brief daily updates about my work and activities.
+  - block: collection
+    content:
+      title: ''
+      filters:
+        folders:
+          - updates
+        exclude_featured: false
+    design:
+      view: date-title-summary
+      spacing:
+        padding: [0, 0, 0, 0]
+---
