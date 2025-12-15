@@ -1,7 +1,7 @@
 ---
 title: Embodiment-First Learning - Interactive Dashboard
 date: 2025-12-15
-external_link: static-website.html
+external_link: /projects/embodiment/static-website.html
 summary: An interactive research dashboard exploring robust tactile sensing in adversarial environments through embodiment-first learning.
 tags:
   - Robotics
@@ -9,9 +9,6 @@ tags:
   - Embodiment Learning
   - Interactive Research
   - Adaptive Control
-image:
-  caption: "Embodiment-First Learning Dashboard"
-  focal_point: Smart
 ---
 
 ## Embodiment-First Learning: Tactile Sensing Research
