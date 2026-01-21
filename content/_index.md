@@ -74,35 +74,27 @@ sections:
   #   design:
   #     view: article-grid
   #     columns: 1
-  - block: collection
+  - block: markdown
     id: updates
     content:
       title: Updates
-      subtitle: ''
-      text: ''
-      # Page type to display. E.g. post, talk, publication...
-      page_type: post
-      # Choose how many pages you would like to display (0 = all pages)
-      count: 5
-      # Filter on criteria
-      filters:
-        author: ""
-        category: ""
-        tag: ""
-        exclude_featured: false
-        exclude_future: false
-        exclude_past: false
-        publication_type: ""
-      # Choose how many pages you would like to offset by
-      offset: 0
-      # Page order: descending (desc) or ascending (asc) date.
-      order: desc
-    design:
-      # Choose a layout view
-      view: date-title-summary
-      # Reduce spacing
-      spacing:
-        padding: [0, 0, 0, 0]
+      text: |-
+        <div style="max-height: 400px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; background-color: #f9fafb;">
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>🎓 11 Dec 2025</strong> — BMW Dialogue Day, Munich
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>📊 02 Nov 2025</strong> — Poster presentation at Soft Robotics Symposium
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
+              <strong>🎤 02 Jul 2025</strong> — Presented my first paper at IAS-19
+            </li>
+            <li style="padding: 0.75rem 0;">
+              <strong>✅ 15 Apr 2025</strong> — Paper accepted at IAS-19
+            </li>
+          </ul>
+        </div>
 
 
 
