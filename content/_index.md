@@ -78,7 +78,7 @@ sections:
     id: updates
     content:
       title: Updates
-      text: |-
+      text: |
         <div style="max-height: 400px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; background-color: #f9fafb;">
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
             <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
