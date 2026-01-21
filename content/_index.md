@@ -43,6 +43,27 @@ sections:
         Please reach out to collaborate 😃
     design:
       columns: '1'
+  - block: markdown
+    id: updates
+    content:
+      title: Updates
+      text: |
+        <div style="max-height: 400px; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 1.5rem; background-color: rgba(250, 250, 250, 0.5); color: inherit;">
+          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🎓 11 Dec 2025</strong> — BMW Dialogue Day, Munich
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>📊 02 Nov 2025</strong> — Poster presentation at Soft Robotics Symposium
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🎤 02 Jul 2025</strong> — Presented my first paper at IAS-19
+            </li>
+            <li style="padding: 0.75rem 0;">
+              <strong>✅ 15 Apr 2025</strong> — Paper accepted at IAS-19
+            </li>
+          </ul>
+        </div>
   # - block: collection
   #   id: publications
   #   content:
@@ -74,27 +95,6 @@ sections:
   #   design:
   #     view: article-grid
   #     columns: 1
-  - block: markdown
-    id: updates
-    content:
-      title: Updates
-      text: |
-        <div style="max-height: 400px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; background-color: #f9fafb;">
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
-              <strong>🎓 11 Dec 2025</strong> — BMW Dialogue Day, Munich
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
-              <strong>📊 02 Nov 2025</strong> — Poster presentation at Soft Robotics Symposium
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid #e5e7eb;">
-              <strong>🎤 02 Jul 2025</strong> — Presented my first paper at IAS-19
-            </li>
-            <li style="padding: 0.75rem 0;">
-              <strong>✅ 15 Apr 2025</strong> — Paper accepted at IAS-19
-            </li>
-          </ul>
-        </div>
 
 
 
