@@ -8,9 +8,10 @@ tags:
   - Embodiment Learning
   - Interactive Research
   - Adaptive Control
+_build:
+  render: html
 ---
 
-{{< rawhtml >}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -659,4 +660,3 @@ tags:
     </script>
 </body>
 </html>
-{{< /rawhtml >}}
