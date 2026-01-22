@@ -65,8 +65,17 @@ sections:
             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
               <strong>🎤 02 Jul 2025</strong> — Presented my first paper at IAS-19
             </li>
-            <li style="padding: 0.75rem 0;">
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
               <strong>✅ 15 Apr 2025</strong> — Paper accepted at IAS-19
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🤖 10 Mar 2025</strong> — Joined the RoboTac Lab at BMW + TUe as a PhD student
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🎓 10 Oct 2024</strong> — MSc Degree in Automation and Control, PoliMi
+            </li>
+            <li style="padding: 0.75rem 0;">
+              <strong>🤖 01 Jun 2024</strong> — Started RL Research Internship at DII Uni-Trento
             </li>
           </ul>
         </div>
