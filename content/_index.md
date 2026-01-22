@@ -51,10 +51,16 @@ sections:
         <div style="max-height: 400px; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 1.5rem; background-color: rgba(250, 250, 250, 0.5); color: inherit;">
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>✅ 12 Jan 2026</strong> — Robotac26 Workshop accepted at ICRA2026
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🤖 12 Dec 2025</strong> — Accepted to ROMANDIC Winter School 2026, Robot Manipulation of Deformable Objects
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
               <strong>🎓 11 Dec 2025</strong> — BMW Dialogue Day, Munich
             </li>
             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>📊 02 Nov 2025</strong> — Poster presentation at Soft Robotics Symposium
+              <strong>🎤 02 Nov 2025</strong> — Poster presentation at Soft Robotics Symposium
             </li>
             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
               <strong>🎤 02 Jul 2025</strong> — Presented my first paper at IAS-19
