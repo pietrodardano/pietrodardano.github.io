@@ -166,9 +166,9 @@ languages:
   - name: Italian
     percent: 100
   - name: English
-    percent: 85
+    percent: 90
   - name: Spanish
-    percent: 70
+    percent: 80
   - name: German
     percent: 10
 
@@ -177,7 +177,7 @@ languages:
 ## About Me
 
 I am a PhD Candidate at the BMW AI Robotics Lab in collaboration with TU-Eindhoven. 
-My research focuses on multimodal perception and behavior adaptation for robots in dynamic, cluttered environments, human-robot and human-vehicle interaction.
+My research focuses on Multi-Modal Perception for Robots in dynamic, cluttered environments, Human-Robot and Human-Vehicle interaction.
 
 With a background in AI for robotics, reinforcement learning, and control engineering, I have worked on projects involving autonomous systems, robotic perception, and decision-making. My experience includes developing Force-Driven validation systems for autonomous aircraft testing, reinforcement learning for quadruped robots, and actuated platforms for drone stability testing.
 
