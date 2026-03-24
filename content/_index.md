@@ -41,42 +41,18 @@ sections:
         From the robotics based research i distill algorithms and methods to improve in-vehicle human-machine interaction.
     design:
       columns: '1'
-  - block: markdown
+  - block: collection
     id: updates
     content:
       title: Updates
-      text: |
-        <div style="max-height: 400px; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 1.5rem; background-color: rgba(250, 250, 250, 0.5); color: inherit;">
-          <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>✅ 12 Jan 2026</strong> — Robotac26 Workshop accepted at ICRA2026
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>🤖 12 Dec 2025</strong> — Accepted to ROMANDIC Winter School 2026, Robot Manipulation of Deformable Objects
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>🎓 11 Dec 2025</strong> — BMW Dialogue Day, Munich
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>🎤 02 Nov 2025</strong> — Poster presentation at Soft Robotics Symposium
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>🎤 02 Jul 2025</strong> — Presented my first paper at IAS-19
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>✅ 15 Apr 2025</strong> — Paper accepted at IAS-19
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>🤖 10 Mar 2025</strong> — Joined the RoboTac Lab at BMW + TUe as a PhD student
-            </li>
-            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
-              <strong>🎓 10 Oct 2024</strong> — MSc Degree in Automation and Control, PoliMi
-            </li>
-            <li style="padding: 0.75rem 0;">
-              <strong>🤖 01 Jun 2024</strong> — Started RL Research Internship at DII Uni-Trento
-            </li>
-          </ul>
-        </div>
+      filters:
+        folders:
+          - updates
+        exclude_featured: false
+    design:
+      view: date-title-summary
+      spacing:
+        padding: [0, 0, 0, 0]
   # - block: collection
   #   id: publications
   #   content:

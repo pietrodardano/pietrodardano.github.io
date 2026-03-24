@@ -1,3 +1,5 @@
+✅ 12 Apr 2026 — Participating RYLA 26: Rotary Youth Leadership Awards
+🤖 09 Feb 2026 — Partecipating at Romandic Winterschool of Robotics, Slovenja
 ✅ 12 Jan 2026 — Robotac26 Workshop accepted at ICRA2026
 🤖 12 Dec 2025 — Accepted to ROMANDIC Winter School 2026, Robot Manipulation of Deformable Objects
 🎓 11 Dec 2025 — BMW Dialogue Day, Munich
@@ -5,5 +7,8 @@
 🎤 02 Jul 2025 — Presented my first paper at IAS-19
 ✅ 15 Apr 2025 — Paper accepted at IAS-19
 🤖 10 Mar 2025 — Joined the RoboTac Lab at BMW + TUe as a PhD student
-🎓 10 Oct 2024 - MSc Degree in Automation and Control, PoliMi
-🤖 01 Jun 2024 - Started RL Research Internship at DII Uni-Trento
+🎓 10 Oct 2024 — MSc Degree in Automation and Control, PoliMi
+🤖 01 Jun 2024 — Started RL Research Internship at DII Uni-Trento
+
+
+## use only these emojis: ✅🤖🎓🎤
