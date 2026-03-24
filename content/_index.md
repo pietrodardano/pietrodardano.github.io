@@ -35,10 +35,8 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        I'm a PhD Candidate in BMW AI Robotics Lab in collaboration TU-Eindhoven.
-
-        My research fosuc on Multi-Modal Perception and for Robots and Intelligent Vehicles.
-        From the robotics based research i distill algorithms and methods to improve in-vehicle human-machine interaction.
+        I focus on Multi-Modal Perception and Learning in Robotics and Intelligent Vehicles.
+        From the robotics based research i distill algorithms and methods to for human-vehicle interaction.
     design:
       columns: '1'
   - block: markdown
