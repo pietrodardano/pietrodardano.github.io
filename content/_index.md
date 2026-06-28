@@ -47,6 +47,12 @@ sections:
         <div style="max-height: 400px; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 1.5rem; background-color: rgba(250, 250, 250, 0.5); color: inherit;">
           <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">
             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🏆 24-26 Jun 2026</strong> — 1st classified at "Europe Embodied" Hackathon in Munich
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
+              <strong>🎤 01-05 Jun 2026</strong> — Organized workshop and presented 2 posters at ICRA 2026 in Vienna
+            </li>
+            <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
               <strong>✅ 12 Apr 2026</strong> — Participating RYLA 26: Rotary Youth Leadership Awards
             </li>
             <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);">
