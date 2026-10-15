@@ -637,69 +637,78 @@ footer {
 }
 
 /* ==========================================================================
-   Research AI Chat Drawer Widget
+   Research Chat Assistant (Sidebar Trigger & Centered Modal Dialog)
    ========================================================================== */
-.chat-widget {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
-  font-family: var(--font-sans);
-}
-
-.chat-toggle-btn {
+.chat-assistant-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 18px;
-  background: var(--text);
-  color: var(--bg);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
   font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-.chat-toggle-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.chat-drawer {
-  position: fixed;
-  bottom: 80px;
-  right: 24px;
-  width: 380px;
-  max-width: calc(100vw - 32px);
-  height: 520px;
-  max-height: calc(100vh - 110px);
-  background: var(--surface);
+  font-family: var(--font-mono);
+  color: var(--accent);
+  background: var(--accent-soft);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg, 12px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 1001;
-  animation: chatFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.chat-drawer.open {
+.chat-assistant-btn:hover {
+  background: var(--surface-subtle);
+  border-color: var(--accent);
+}
+
+.chat-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: chatFadeIn 0.18s ease;
+}
+
+.chat-modal-overlay.open {
   display: flex;
 }
 
+.chat-drawer {
+  width: 520px;
+  max-width: 100%;
+  height: 580px;
+  max-height: 85vh;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatSlideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @keyframes chatFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes chatSlideUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 

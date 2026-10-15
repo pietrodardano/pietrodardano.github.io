@@ -47,6 +47,10 @@
       <a id="cv-button" class="cv-btn" href="assets/resume.pdf" target="_blank" rel="noopener">
         <span>📄 Curriculum Vitae</span>
       </a>
+
+      <button id="chat-toggle-btn" class="chat-assistant-btn" aria-label="Open Research Chat Assistant">
+        <span>🤖 Research Chat Assistant</span>
+      </button>
     </aside>
 
     <!-- Right Main Content Column -->
@@ -130,18 +134,13 @@
 
     </main>
 
-  <!-- Floating Research AI Chat Trigger & Drawer -->
-  <div id="chat-widget" class="chat-widget">
-    <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open Research AI Assistant">
-      <span class="chat-btn-icon">💬</span>
-      <span class="chat-btn-label">Ask Research AI</span>
-    </button>
-
-    <div id="chat-drawer" class="chat-drawer" role="dialog" aria-label="Research AI Chat">
+  <!-- Research AI Chat Modal (Centered Dialog with Backdrop) -->
+  <div id="chat-modal-overlay" class="chat-modal-overlay">
+    <div id="chat-drawer" class="chat-drawer" role="dialog" aria-modal="true" aria-label="Research Chat Assistant">
       <div class="chat-header">
         <div class="chat-header-info">
-          <div class="chat-header-title" id="chat-title">Pietro's Research AI</div>
-          <div class="chat-header-badge" id="chat-badge">Nemotron · OpenRouter</div>
+          <div class="chat-header-title" id="chat-title">Research Chat Assistant</div>
+          <div class="chat-header-badge" id="chat-badge">AI Research Companion · OpenRouter</div>
         </div>
         <button id="chat-close-btn" class="chat-close-btn" aria-label="Close Chat">✕</button>
       </div>
@@ -155,7 +154,7 @@
       </div>
 
       <form id="chat-form" class="chat-form">
-        <input id="chat-input" class="chat-input" type="text" placeholder="Ask about research, papers, labs..." autocomplete="off">
+        <input id="chat-input" class="chat-input" type="text" placeholder="Ask about Pietro's research, papers, labs..." autocomplete="off">
         <button id="chat-send-btn" class="chat-send-btn" type="submit" aria-label="Send message">➤</button>
       </form>
     </div>

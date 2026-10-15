@@ -330,15 +330,16 @@
     }
   }
 
-  // 9. Research AI Chat Drawer
+  // 9. Research Chat Assistant Modal
   function initChat(chatConfig) {
-    const chatWidget = document.getElementById('chat-widget');
-    if (!chatWidget || !chatConfig || !chatConfig.enabled) {
-      if (chatWidget) chatWidget.style.display = 'none';
+    const modalOverlay = document.getElementById('chat-modal-overlay');
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    if (!toggleBtn || !chatConfig || !chatConfig.enabled) {
+      if (toggleBtn) toggleBtn.style.display = 'none';
+      if (modalOverlay) modalOverlay.style.display = 'none';
       return;
     }
 
-    const toggleBtn = document.getElementById('chat-toggle-btn');
     const drawer = document.getElementById('chat-drawer');
     const closeBtn = document.getElementById('chat-close-btn');
     const messagesEl = document.getElementById('chat-messages');
@@ -381,17 +382,33 @@
       });
     }
 
-    toggleBtn.addEventListener('click', () => {
-      const isOpen = drawer.classList.contains('open');
-      drawer.classList.toggle('open', !isOpen);
-      if (!isOpen) {
+    function openModal() {
+      if (modalOverlay) {
+        modalOverlay.classList.add('open');
         input.focus();
-        trackEvent('open_chat');
+        trackEvent('open_chat_assistant');
       }
-    });
+    }
 
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('open');
+    function closeModal() {
+      if (modalOverlay) {
+        modalOverlay.classList.remove('open');
+      }
+    }
+
+    toggleBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('open')) {
+        closeModal();
+      }
     });
 
     async function handleSend() {
@@ -403,9 +420,10 @@
       input.value = '';
       sendBtn.disabled = true;
 
-      trackEvent('chat_query', { query: text.substring(0, 50) });
+      // Track query in Umami Analytics so Pietro can review what visitors ask
+      trackEvent('chat_query', { question: text });
 
-      const loadingMsg = appendMsg('assistant loading', 'Thinking...');
+      const loadingMsg = appendMsg('assistant loading', 'Consulting research profile...');
 
       try {
         const res = await fetch(chatConfig.endpoint, {
@@ -419,7 +437,21 @@
 
         if (data.choices && data.choices[0] && data.choices[0].message) {
           const msg = data.choices[0].message;
-          const reply = msg.content || (msg.reasoning ? msg.reasoning.split('\n\n').pop() : null) || 'I am ready to help! Could you please ask that again?';
+          let reply = msg.content;
+          
+          // Clean fallback if model returned reasoning instead of content
+          if (!reply && msg.reasoning) {
+            const paragraphs = msg.reasoning.split(/\n\s*\n/).filter(p => !p.toLowerCase().includes('thinking process') && !p.toLowerCase().includes('analyze user input'));
+            reply = paragraphs.pop() || msg.reasoning;
+          }
+
+          if (!reply) {
+            reply = "I am ready to help! Please feel free to ask about Pietro's research with Mohsen Kaboli, Andrea Del Prete, or Paolo Rocco.";
+          }
+
+          // Strip any residual thought tags
+          reply = reply.replace(/<thought>[\s\S]*?<\/thought>/gi, '').trim();
+
           appendMsg('assistant', reply);
           conversation.push({ role: 'assistant', content: reply });
         } else if (data.error) {
