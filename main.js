@@ -1,0 +1,290 @@
+/**
+ * Pietro Dardano - Website Engine (YAGNI / Vanilla JS)
+ * Renders data from window.SITE_DATA and manages theme + interactions.
+ */
+
+(function () {
+  'use strict';
+
+  // 1. Theme Management
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  
+  function getPreferredTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (themeToggleBtn) {
+      themeToggleBtn.textContent = theme === 'dark' ? '☀ Light' : '☾ Dark';
+    }
+  }
+
+  const initialTheme = getPreferredTheme();
+  applyTheme(initialTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // 2. Render Profile & Sidebar
+  function renderProfile(profile) {
+    const avatarEl = document.getElementById('profile-avatar');
+    if (avatarEl && profile.avatar) {
+      avatarEl.src = profile.avatar;
+      avatarEl.alt = profile.name;
+    }
+
+    const nameEl = document.getElementById('profile-name');
+    if (nameEl) nameEl.textContent = profile.name;
+
+    const titleEl = document.getElementById('profile-title');
+    if (titleEl) titleEl.textContent = profile.title;
+
+    const affilEl = document.getElementById('profile-affiliations');
+    if (affilEl && profile.affiliations) {
+      affilEl.innerHTML = profile.affiliations
+        .map(a => `<div><a href="${a.url}" target="_blank" rel="noopener">${a.name}</a></div>`)
+        .join('');
+    }
+
+    const linksEl = document.getElementById('profile-links');
+    if (linksEl && profile.links) {
+      linksEl.innerHTML = profile.links
+        .map(l => `<a class="link-btn" href="${l.url}" target="_blank" rel="noopener">${getIconSvg(l.icon)}<span>${l.name}</span></a>`)
+        .join('');
+    }
+
+    const cvBtn = document.getElementById('cv-button');
+    if (cvBtn && profile.resume) {
+      cvBtn.href = profile.resume;
+    }
+  }
+
+  // Helper icons (minimal SVG)
+  function getIconSvg(type) {
+    switch (type) {
+      case 'scholar':
+        return `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>`;
+      case 'orcid':
+        return `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.541 0 .977.436.977.978s-.436.978-.977.978-.978-.436-.978-.978.436-.978.978-.978zm-.884 4.542h1.768v10.702H6.485V8.92zm4.512 0h4.437c3.275 0 5.258 2.052 5.258 5.351 0 3.298-1.983 5.351-5.258 5.351h-4.437V8.92zm1.768 1.637v7.428h2.669c2.25 0 3.518-1.393 3.518-3.714 0-2.321-1.268-3.714-3.518-3.714h-2.669z"/></svg>`;
+      case 'github':
+        return `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>`;
+      case 'linkedin':
+        return `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>`;
+      case 'email':
+        return `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`;
+      default:
+        return `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>`;
+    }
+  }
+
+  // 3. Render About & Bio
+  function renderAbout(profile) {
+    const bioContainer = document.getElementById('bio-container');
+    if (bioContainer && profile.bio) {
+      bioContainer.innerHTML = profile.bio
+        .map(p => `<p class="bio-paragraph">${p}</p>`)
+        .join('');
+    }
+
+    const tagsContainer = document.getElementById('research-tags');
+    if (tagsContainer && profile.researchInterests) {
+      tagsContainer.innerHTML = profile.researchInterests
+        .map(t => `<span class="tag">${t}</span>`)
+        .join('');
+    }
+  }
+
+  // 4. Render News Feed
+  function renderNews(news) {
+    const newsContainer = document.getElementById('news-container');
+    if (!newsContainer || !news) return;
+
+    newsContainer.innerHTML = news
+      .map(item => `
+        <div class="news-item">
+          <span class="news-date">${item.date}</span>
+          <span class="news-badge">${item.tag}</span>
+          <div class="news-text">${item.icon ? item.icon + ' ' : ''}${item.title}</div>
+        </div>
+      `)
+      .join('');
+  }
+
+  // 5. Render Publications
+  function renderPublications(pubs) {
+    const pubContainer = document.getElementById('publications-container');
+    if (!pubContainer || !pubs) return;
+
+    pubContainer.innerHTML = pubs
+      .map((pub, idx) => {
+        const formattedAuthors = pub.authors
+          .map(a => a.includes("Pietro Dardano") ? `<span class="author-me">${a}</span>` : a)
+          .join(', ');
+
+        const linkButtons = pub.links
+          .map(l => `<a class="action-btn" href="${l.url}" target="_blank" rel="noopener">↗ ${l.name}</a>`)
+          .join('');
+
+        const tagsHtml = pub.tags
+          ? pub.tags.map(t => `<span class="tag">${t}</span>`).join('')
+          : '';
+
+        return `
+          <article class="pub-card" id="pub-${pub.id || idx}">
+            <h3 class="pub-title">${pub.title}</h3>
+            <div class="pub-authors">${formattedAuthors}</div>
+            <div class="pub-venue">${pub.venue} (${pub.year})</div>
+            
+            <div class="pub-actions">
+              ${linkButtons}
+              ${pub.abstract ? `<button class="action-btn" data-toggle="abstract" data-target="abs-${idx}">Abstract</button>` : ''}
+              ${pub.bibtex ? `<button class="action-btn" data-toggle="bibtex" data-target="bib-${idx}">BibTeX</button>` : ''}
+            </div>
+
+            ${tagsHtml ? `<div class="tag-list" style="margin-top: 10px;">${tagsHtml}</div>` : ''}
+
+            ${pub.abstract ? `
+              <div class="pub-collapsible" id="abs-${idx}">
+                <div class="pub-abstract-text">${pub.abstract}</div>
+              </div>
+            ` : ''}
+
+            ${pub.bibtex ? `
+              <div class="pub-collapsible" id="bib-${idx}">
+                <div class="pub-bibtex-box">
+                  <button class="copy-bibtex-btn" data-bib="${encodeURIComponent(pub.bibtex)}">Copy</button>
+                  <pre><code>${pub.bibtex}</code></pre>
+                </div>
+              </div>
+            ` : ''}
+          </article>
+        `;
+      })
+      .join('');
+
+    // Attach collapsible toggles
+    pubContainer.querySelectorAll('button[data-toggle]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetId = btn.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const isOpen = targetEl.classList.contains('open');
+          targetEl.classList.toggle('open', !isOpen);
+          btn.classList.toggle('active', !isOpen);
+        }
+      });
+    });
+
+    // Attach BibTeX copy
+    pubContainer.querySelectorAll('.copy-bibtex-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rawBib = decodeURIComponent(btn.getAttribute('data-bib'));
+        navigator.clipboard.writeText(rawBib).then(() => {
+          const oldText = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = oldText; }, 1800);
+        });
+      });
+    });
+  }
+
+  // 6. Render Projects
+  function renderProjects(projects) {
+    const projContainer = document.getElementById('projects-container');
+    if (!projContainer || !projects) return;
+
+    projContainer.innerHTML = projects
+      .map(proj => {
+        const linksHtml = proj.links && proj.links.length
+          ? proj.links.map(l => `<a class="action-btn" href="${l.url}" target="_blank" rel="noopener">↗ ${l.name}</a>`).join('')
+          : '';
+
+        const tagsHtml = proj.tags
+          ? proj.tags.map(t => `<span class="tag">${t}</span>`).join('')
+          : '';
+
+        const videoHtml = proj.video
+          ? `<div class="project-media" style="margin-top: 12px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+              <iframe width="100%" height="315" src="${proj.video}" frameborder="0" allowfullscreen></iframe>
+            </div>`
+          : '';
+
+        return `
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">${proj.title}</h3>
+              <span class="project-period">${proj.period}</span>
+            </div>
+            <div class="project-summary">${proj.summary}</div>
+            <div class="project-desc">${proj.description}</div>
+            ${videoHtml}
+            <div class="project-footer">
+              <div class="tag-list" style="margin: 0;">${tagsHtml}</div>
+              <div class="project-links">${linksHtml}</div>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+  }
+
+  // 7. Render Experience & Education
+  function renderExperience(expList, eduList) {
+    const expContainer = document.getElementById('experience-container');
+    if (expContainer && expList) {
+      expContainer.innerHTML = expList
+        .map(e => `
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-role">${e.role}</div>
+            <div class="timeline-org">${e.organization} · <span style="font-weight: 400; color: var(--text-muted);">${e.location}</span></div>
+            <div class="timeline-period">${e.period}</div>
+            <div class="timeline-details">${e.details}</div>
+          </div>
+        `)
+        .join('');
+    }
+
+    const eduContainer = document.getElementById('education-container');
+    if (eduContainer && eduList) {
+      eduContainer.innerHTML = eduList
+        .map(ed => `
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-role">${ed.degree}</div>
+            <div class="timeline-org">${ed.institution}</div>
+            <div class="timeline-period">${ed.period}</div>
+            <div class="timeline-details">${ed.details}</div>
+          </div>
+        `)
+        .join('');
+    }
+  }
+
+  // 8. Initialize Everything
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!window.SITE_DATA) {
+      console.error('SITE_DATA is missing or not loaded.');
+      return;
+    }
+
+    const data = window.SITE_DATA;
+    renderProfile(data.profile);
+    renderAbout(data.profile);
+    renderNews(data.news);
+    renderPublications(data.publications);
+    renderProjects(data.projects);
+    renderExperience(data.experience, data.education);
+
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  });
+})();

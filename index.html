@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pietro Dardano | PhD in AI & Robotics</title>
+  
+  <!-- Meta & Academic SEO -->
+  <meta name="description" content="Pietro Dardano - PhD Candidate in AI & Robotics at BMW AI Robotics and TU Eindhoven. Research in multimodal perception, robotics manipulation, reinforcement learning, and intelligent vehicles.">
+  <meta name="author" content="Pietro Dardano">
+  <meta property="og:title" content="Pietro Dardano | PhD in AI & Robotics">
+  <meta property="og:description" content="Personal academic website of Pietro Dardano. Research in multimodal perception, robotics, and intelligent vehicles.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pietrodardano.github.io/">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+</head>
+<body>
+
+  <div class="page-container">
+    
+    <!-- Left Sticky Profile Column -->
+    <aside class="sidebar">
+      <div class="avatar-wrapper">
+        <img id="profile-avatar" src="assets/avatar.jpg" alt="Pietro Dardano">
+      </div>
+
+      <h1 class="profile-name" id="profile-name">Pietro Dardano</h1>
+      <div class="profile-title" id="profile-title">PhD Candidate in AI & Robotics</div>
+      
+      <div class="profile-affiliations" id="profile-affiliations">
+        <!-- Dynamically rendered affiliations -->
+      </div>
+
+      <div class="profile-links" id="profile-links">
+        <!-- Social and academic links -->
+      </div>
+
+      <a id="cv-button" class="cv-btn" href="assets/resume.pdf" target="_blank" rel="noopener">
+        <span>📄 Curriculum Vitae</span>
+      </a>
+
+      <div class="theme-toggle-row">
+        <span>Interface Mode</span>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light theme">☾ Dark</button>
+      </div>
+    </aside>
+
+    <!-- Right Main Content Column -->
+    <main class="main-content">
+      
+      <!-- Research / Bio Section -->
+      <section id="about" class="section">
+        <div class="section-header">
+          <h2 class="section-title">About & Research</h2>
+          <span class="section-subtitle">Robotics · Perception · Control</span>
+        </div>
+        <div id="bio-container">
+          <!-- Dynamically rendered bio paragraphs -->
+        </div>
+        <div id="research-tags" class="tag-list">
+          <!-- Research tags -->
+        </div>
+      </section>
+
+      <!-- News & Updates Section -->
+      <section id="news" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Updates & News</h2>
+          <span class="section-subtitle">Timeline</span>
+        </div>
+        <div id="news-container" class="news-container">
+          <!-- Dynamically rendered news items -->
+        </div>
+      </section>
+
+      <!-- Publications Section -->
+      <section id="publications" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Publications</h2>
+          <span class="section-subtitle">Peer-Reviewed Papers & Preprints</span>
+        </div>
+        <div id="publications-container">
+          <!-- Dynamically rendered publications -->
+        </div>
+      </section>
+
+      <!-- Selected Projects Section -->
+      <section id="projects" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Selected Projects</h2>
+          <span class="section-subtitle">Robotics & AI Systems</span>
+        </div>
+        <div id="projects-container">
+          <!-- Dynamically rendered projects -->
+        </div>
+      </section>
+
+      <!-- Experience & Education Section -->
+      <section id="experience" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Experience & Education</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+          <div>
+            <h3 style="font-family: var(--font-mono); font-size: 0.95rem; text-transform: uppercase; margin-bottom: 16px; color: var(--text-muted);">Experience</h3>
+            <div id="experience-container" class="timeline">
+              <!-- Dynamically rendered experience -->
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-family: var(--font-mono); font-size: 0.95rem; text-transform: uppercase; margin-bottom: 16px; color: var(--text-muted);">Education</h3>
+            <div id="education-container" class="timeline">
+              <!-- Dynamically rendered education -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Minimalist Footer -->
+      <footer>
+        <div>© <span id="current-year"></span> Pietro Dardano</div>
+        <div>Built with Vanilla HTML & CSS · Zero bloat</div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- Central declarative data and renderer -->
+  <script src="site-data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
