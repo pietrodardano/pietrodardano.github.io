@@ -47,6 +47,21 @@ window.SITE_DATA = {
     umamiWebsiteId: "aaa6c084-5fd3-404b-af49-fe671dcdbfa2"
   },
 
+  // Research AI Chat Assistant (Powered by Cloudflare Worker + OpenRouter)
+  chat: {
+    enabled: true,
+    endpoint: "https://pietro-ai.dardanopietro.workers.dev",
+    title: "Pietro's Research AI",
+    badge: "Nemotron / OpenRouter",
+    initialGreeting: "Hello! I am Pietro's research assistant. Ask me about his work on multi-modal perception with Mohsen Kaboli, quadruped RL with Andrea Del Prete, or robot control with Paolo Rocco.",
+    suggestedPrompts: [
+      "PhD research on multi-modal perception with Mohsen Kaboli",
+      "Quadruped RL and Sim2Real with Andrea Del Prete",
+      "Cobot avionics testing with Paolo Rocco",
+      "How to collaborate with Pietro"
+    ]
+  },
+
   news: [
     {
       date: "2026-06",

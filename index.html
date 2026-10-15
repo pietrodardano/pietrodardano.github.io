@@ -130,6 +130,35 @@
 
     </main>
 
+  <!-- Floating Research AI Chat Trigger & Drawer -->
+  <div id="chat-widget" class="chat-widget">
+    <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open Research AI Assistant">
+      <span class="chat-btn-icon">💬</span>
+      <span class="chat-btn-label">Ask Research AI</span>
+    </button>
+
+    <div id="chat-drawer" class="chat-drawer" role="dialog" aria-label="Research AI Chat">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-header-title" id="chat-title">Pietro's Research AI</div>
+          <div class="chat-header-badge" id="chat-badge">Nemotron · OpenRouter</div>
+        </div>
+        <button id="chat-close-btn" class="chat-close-btn" aria-label="Close Chat">✕</button>
+      </div>
+
+      <div id="chat-messages" class="chat-messages">
+        <!-- Messages rendered dynamically -->
+      </div>
+
+      <div id="chat-prompts" class="chat-prompts">
+        <!-- Suggested quick prompt chips -->
+      </div>
+
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" class="chat-input" type="text" placeholder="Ask about research, papers, labs..." autocomplete="off">
+        <button id="chat-send-btn" class="chat-send-btn" type="submit" aria-label="Send message">➤</button>
+      </form>
+    </div>
   </div>
 
   <!-- Central declarative data and renderer -->

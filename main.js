@@ -330,7 +330,118 @@
     }
   }
 
-  // 9. Initialize Everything
+  // 9. Research AI Chat Drawer
+  function initChat(chatConfig) {
+    const chatWidget = document.getElementById('chat-widget');
+    if (!chatWidget || !chatConfig || !chatConfig.enabled) {
+      if (chatWidget) chatWidget.style.display = 'none';
+      return;
+    }
+
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    const drawer = document.getElementById('chat-drawer');
+    const closeBtn = document.getElementById('chat-close-btn');
+    const messagesEl = document.getElementById('chat-messages');
+    const promptsEl = document.getElementById('chat-prompts');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send-btn');
+    const titleEl = document.getElementById('chat-title');
+    const badgeEl = document.getElementById('chat-badge');
+
+    if (titleEl && chatConfig.title) titleEl.textContent = chatConfig.title;
+    if (badgeEl && chatConfig.badge) badgeEl.textContent = chatConfig.badge;
+
+    const conversation = [];
+
+    function appendMsg(role, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${role}`;
+      msgDiv.textContent = text;
+      messagesEl.appendChild(msgDiv);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return msgDiv;
+    }
+
+    if (chatConfig.initialGreeting) {
+      appendMsg('assistant', chatConfig.initialGreeting);
+    }
+
+    if (promptsEl && chatConfig.suggestedPrompts) {
+      promptsEl.innerHTML = chatConfig.suggestedPrompts
+        .map(p => `<button type="button" class="prompt-chip" data-prompt="${p}">💡 ${p}</button>`)
+        .join('');
+
+      promptsEl.querySelectorAll('.prompt-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const prompt = chip.getAttribute('data-prompt');
+          input.value = prompt;
+          handleSend();
+        });
+      });
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = drawer.classList.contains('open');
+      drawer.classList.toggle('open', !isOpen);
+      if (!isOpen) {
+        input.focus();
+        trackEvent('open_chat');
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('open');
+    });
+
+    async function handleSend() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMsg('user', text);
+      conversation.push({ role: 'user', content: text });
+      input.value = '';
+      sendBtn.disabled = true;
+
+      trackEvent('chat_query', { query: text.substring(0, 50) });
+
+      const loadingMsg = appendMsg('assistant loading', 'Thinking...');
+
+      try {
+        const res = await fetch(chatConfig.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: conversation })
+        });
+
+        const data = await res.json();
+        loadingMsg.remove();
+
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+          const reply = data.choices[0].message.content;
+          appendMsg('assistant', reply);
+          conversation.push({ role: 'assistant', content: reply });
+        } else if (data.error) {
+          appendMsg('assistant', `⚠️ Note from model: ${data.error.message || JSON.stringify(data.error)}`);
+        } else {
+          appendMsg('assistant', 'Sorry, I could not process your question at the moment.');
+        }
+      } catch (err) {
+        loadingMsg.remove();
+        appendMsg('assistant', 'Network error connecting to research assistant. Please try again.');
+      } finally {
+        sendBtn.disabled = false;
+        input.focus();
+      }
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleSend();
+    });
+  }
+
+  // 10. Initialize Everything
   window.addEventListener('DOMContentLoaded', () => {
     if (!window.SITE_DATA) {
       console.error('SITE_DATA is missing or not loaded.');
@@ -348,6 +459,10 @@
     renderPublications(data.publications);
     renderProjects(data.projects);
     renderExperience(data.experience, data.education);
+
+    if (data.chat) {
+      initChat(data.chat);
+    }
 
     const yearEl = document.getElementById('current-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();

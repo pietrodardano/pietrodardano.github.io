@@ -107,6 +107,14 @@ Open [`site-data.js`](file:///Users/Q682676/Documents/pietrodardano.github.io/si
 - To enable or update the tracker, edit `analytics.umamiWebsiteId` in [`site-data.js`](file:///Users/Q682676/Documents/pietrodardano.github.io/site-data.js). The website ID is a write-only public identifier that allows sending pings but grants zero read permissions.
 - Telemetry events tracked automatically in `main.js`: `cv_download`, `copy_bibtex`, `paper_link_click`, `project_link_click`, `social_link_click`, `toggle_theme`.
 
+### 3.6 Research AI Chat Assistant (OpenRouter + Cloudflare Worker)
+- Interactive grounded assistant for Pietro's academic profile, grounded on supervisors and research themes:
+  - Mohsen Kaboli (BMW & TU/e): Tactile sensing, multi-modal perception, robotic manipulation, cognitive vehicles.
+  - Andrea Del Prete (Uni-Trento): Reinforcement learning, Sim2Real on quadrupeds (Unitree AlienGo), DDPG/TD3 safety value functions.
+  - Paolo Rocco (PoliMi): Robot control, cobots, force control, avionics testing with XAI.
+- Securely decoupled: The OpenRouter secret API key is stored only inside the private Cloudflare Worker (`pietro-ai.dardanopietro.workers.dev`).
+- Front-end config: `chat.enabled` and `chat.endpoint` in [`site-data.js`](file:///Users/Q682676/Documents/pietrodardano.github.io/site-data.js).
+
 ---
 
 ## 4. Design & Code Constraints
