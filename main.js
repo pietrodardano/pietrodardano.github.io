@@ -418,7 +418,8 @@
         loadingMsg.remove();
 
         if (data.choices && data.choices[0] && data.choices[0].message) {
-          const reply = data.choices[0].message.content;
+          const msg = data.choices[0].message;
+          const reply = msg.content || (msg.reasoning ? msg.reasoning.split('\n\n').pop() : null) || 'I am ready to help! Could you please ask that again?';
           appendMsg('assistant', reply);
           conversation.push({ role: 'assistant', content: reply });
         } else if (data.error) {
