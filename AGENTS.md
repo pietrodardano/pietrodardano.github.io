@@ -14,7 +14,7 @@ This document governs how AI coding assistants and developers interact with, mai
    - Almost all content changes (news, publications, projects, bio, links) are made strictly in [`site-data.js`](file:///Users/Q682676/Documents/pietrodardano.github.io/site-data.js).
    - Avoid hardcoding dynamic content into `index.html`.
 3. **Modernist Scientific Aesthetic**:
-   - Sharp, rectangular, squared-ish design (border-radius: `0px` to `2px`).
+   - Clean, squared-ish design with subtle rounded corners (border-radius: `var(--radius)` ~`8px`).
    - Clean 1px borders, crisp typography (system sans-serif + monospace accents for metadata/tags).
    - Fully accessible Light & Dark mode support.
 
