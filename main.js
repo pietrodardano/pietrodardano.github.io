@@ -1,12 +1,35 @@
 /**
  * Pietro Dardano - Website Engine (YAGNI / Vanilla JS)
- * Renders data from window.SITE_DATA and manages theme + interactions.
+ * Renders data from window.SITE_DATA, manages theme, telemetry, and interactions.
  */
 
 (function () {
   'use strict';
 
-  // 1. Theme Management
+  // 1. Analytics & Privacy-first Telemetry (Umami Cloud - Write-only)
+  function initAnalytics(analyticsConfig) {
+    if (!analyticsConfig || !analyticsConfig.umamiWebsiteId) return;
+
+    if (document.querySelector('script[src*="umami.is"]')) return;
+
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = 'https://cloud.umami.is/script.js';
+    script.setAttribute('data-website-id', analyticsConfig.umamiWebsiteId);
+    document.head.appendChild(script);
+  }
+
+  function trackEvent(eventName, eventData = {}) {
+    if (window.umami && typeof window.umami.track === 'function') {
+      try {
+        window.umami.track(eventName, eventData);
+      } catch (err) {
+        // Fail silently
+      }
+    }
+  }
+
+  // 2. Theme Management
   const themeToggleBtn = document.getElementById('theme-toggle');
   
   function getPreferredTheme() {
@@ -29,11 +52,13 @@
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
-      applyTheme(current === 'dark' ? 'light' : 'dark');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      trackEvent('toggle_theme', { theme: next });
     });
   }
 
-  // 2. Render Profile & Sidebar
+  // 3. Render Profile & Sidebar
   function renderProfile(profile) {
     const avatarEl = document.getElementById('profile-avatar');
     if (avatarEl && profile.avatar) {
@@ -57,13 +82,22 @@
     const linksEl = document.getElementById('profile-links');
     if (linksEl && profile.links) {
       linksEl.innerHTML = profile.links
-        .map(l => `<a class="link-btn" href="${l.url}" target="_blank" rel="noopener">${getIconSvg(l.icon)}<span>${l.name}</span></a>`)
+        .map(l => `<a class="link-btn" href="${l.url}" target="_blank" rel="noopener" data-platform="${l.name}">${getIconSvg(l.icon)}<span>${l.name}</span></a>`)
         .join('');
+
+      linksEl.querySelectorAll('.link-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          trackEvent('social_link_click', { platform: btn.getAttribute('data-platform') });
+        });
+      });
     }
 
     const cvBtn = document.getElementById('cv-button');
     if (cvBtn && profile.resume) {
       cvBtn.href = profile.resume;
+      cvBtn.addEventListener('click', () => {
+        trackEvent('cv_download', { file: 'resume.pdf' });
+      });
     }
   }
 
@@ -85,7 +119,7 @@
     }
   }
 
-  // 3. Render About & Bio
+  // 4. Render About & Bio
   function renderAbout(profile) {
     const bioContainer = document.getElementById('bio-container');
     if (bioContainer && profile.bio) {
@@ -102,7 +136,7 @@
     }
   }
 
-  // 4. Render News Feed
+  // 5. Render News Feed
   function renderNews(news) {
     const newsContainer = document.getElementById('news-container');
     if (!newsContainer || !news) return;
@@ -118,7 +152,7 @@
       .join('');
   }
 
-  // 5. Render Publications
+  // 6. Render Publications
   function renderPublications(pubs) {
     const pubContainer = document.getElementById('publications-container');
     if (!pubContainer || !pubs) return;
@@ -130,7 +164,7 @@
           .join(', ');
 
         const linkButtons = pub.links
-          .map(l => `<a class="action-btn" href="${l.url}" target="_blank" rel="noopener">↗ ${l.name}</a>`)
+          .map(l => `<a class="action-btn pub-link" href="${l.url}" target="_blank" rel="noopener" data-pub="${pub.id || idx}" data-link="${l.name}">↗ ${l.name}</a>`)
           .join('');
 
         const tagsHtml = pub.tags
@@ -145,8 +179,8 @@
             
             <div class="pub-actions">
               ${linkButtons}
-              ${pub.abstract ? `<button class="action-btn" data-toggle="abstract" data-target="abs-${idx}">Abstract</button>` : ''}
-              ${pub.bibtex ? `<button class="action-btn" data-toggle="bibtex" data-target="bib-${idx}">BibTeX</button>` : ''}
+              ${pub.abstract ? `<button class="action-btn" data-toggle="abstract" data-target="abs-${idx}" data-pub="${pub.id || idx}">Abstract</button>` : ''}
+              ${pub.bibtex ? `<button class="action-btn" data-toggle="bibtex" data-target="bib-${idx}" data-pub="${pub.id || idx}">BibTeX</button>` : ''}
             </div>
 
             ${tagsHtml ? `<div class="tag-list" style="margin-top: 10px;">${tagsHtml}</div>` : ''}
@@ -160,7 +194,7 @@
             ${pub.bibtex ? `
               <div class="pub-collapsible" id="bib-${idx}">
                 <div class="pub-bibtex-box">
-                  <button class="copy-bibtex-btn" data-bib="${encodeURIComponent(pub.bibtex)}">Copy</button>
+                  <button class="copy-bibtex-btn" data-bib="${encodeURIComponent(pub.bibtex)}" data-pub="${pub.id || idx}">Copy</button>
                   <pre><code>${pub.bibtex}</code></pre>
                 </div>
               </div>
@@ -172,13 +206,18 @@
 
     // Attach collapsible toggles
     pubContainer.querySelectorAll('button[data-toggle]').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
+        const toggleType = btn.getAttribute('data-toggle');
         const targetId = btn.getAttribute('data-target');
+        const pubId = btn.getAttribute('data-pub') || targetId;
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
           const isOpen = targetEl.classList.contains('open');
           targetEl.classList.toggle('open', !isOpen);
           btn.classList.toggle('active', !isOpen);
+          if (!isOpen) {
+            trackEvent('pub_toggle_' + toggleType, { paper: pubId });
+          }
         }
       });
     });
@@ -187,16 +226,28 @@
     pubContainer.querySelectorAll('.copy-bibtex-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const rawBib = decodeURIComponent(btn.getAttribute('data-bib'));
+        const pubId = btn.getAttribute('data-pub') || 'paper';
         navigator.clipboard.writeText(rawBib).then(() => {
           const oldText = btn.textContent;
           btn.textContent = 'Copied!';
           setTimeout(() => { btn.textContent = oldText; }, 1800);
+          trackEvent('copy_bibtex', { paper: pubId });
+        });
+      });
+    });
+
+    // Track paper external links (arXiv, PDF, Code, DOI)
+    pubContainer.querySelectorAll('a.pub-link').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('paper_link_click', {
+          paper: link.getAttribute('data-pub'),
+          linkType: link.getAttribute('data-link')
         });
       });
     });
   }
 
-  // 6. Render Projects
+  // 7. Render Projects
   function renderProjects(projects) {
     const projContainer = document.getElementById('projects-container');
     if (!projContainer || !projects) return;
@@ -204,7 +255,7 @@
     projContainer.innerHTML = projects
       .map(proj => {
         const linksHtml = proj.links && proj.links.length
-          ? proj.links.map(l => `<a class="action-btn" href="${l.url}" target="_blank" rel="noopener">↗ ${l.name}</a>`).join('')
+          ? proj.links.map(l => `<a class="action-btn project-link" href="${l.url}" target="_blank" rel="noopener" data-proj="${proj.id}" data-link="${l.name}">↗ ${l.name}</a>`).join('')
           : '';
 
         const tagsHtml = proj.tags
@@ -234,9 +285,19 @@
         `;
       })
       .join('');
+
+    // Track project links
+    projContainer.querySelectorAll('a.project-link').forEach(link => {
+      link.addEventListener('click', () => {
+        trackEvent('project_link_click', {
+          project: link.getAttribute('data-proj'),
+          link: link.getAttribute('data-link')
+        });
+      });
+    });
   }
 
-  // 7. Render Experience & Education
+  // 8. Render Experience & Education
   function renderExperience(expList, eduList) {
     const expContainer = document.getElementById('experience-container');
     if (expContainer && expList) {
@@ -269,7 +330,7 @@
     }
   }
 
-  // 8. Initialize Everything
+  // 9. Initialize Everything
   window.addEventListener('DOMContentLoaded', () => {
     if (!window.SITE_DATA) {
       console.error('SITE_DATA is missing or not loaded.');
@@ -277,6 +338,10 @@
     }
 
     const data = window.SITE_DATA;
+    if (data.analytics) {
+      initAnalytics(data.analytics);
+    }
+
     renderProfile(data.profile);
     renderAbout(data.profile);
     renderNews(data.news);

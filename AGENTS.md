@@ -101,6 +101,12 @@ Open [`site-data.js`](file:///Users/Q682676/Documents/pietrodardano.github.io/si
 - To update the CV: replace [`assets/resume.pdf`](file:///Users/Q682676/Documents/pietrodardano.github.io/assets/resume.pdf).
 - To update the photo: replace [`assets/avatar.jpg`](file:///Users/Q682676/Documents/pietrodardano.github.io/assets/avatar.jpg).
 
+### 3.5 Private Analytics & Telemetry (Umami Cloud)
+- Privacy-first, zero-cookie analytics.
+- Dashboard is strictly private at `https://cloud.umami.is/` behind personal authentication.
+- To enable or update the tracker, edit `analytics.umamiWebsiteId` in [`site-data.js`](file:///Users/Q682676/Documents/pietrodardano.github.io/site-data.js). The website ID is a write-only public identifier that allows sending pings but grants zero read permissions.
+- Telemetry events tracked automatically in `main.js`: `cv_download`, `copy_bibtex`, `paper_link_click`, `project_link_click`, `social_link_click`, `toggle_theme`.
+
 ---
 
 ## 4. Design & Code Constraints

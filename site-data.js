@@ -41,6 +41,12 @@ window.SITE_DATA = {
     ]
   },
 
+  // Analytics (Private dashboard at https://cloud.umami.is)
+  // Public write-only tracking ID (Safe to commit, cannot be used to view stats)
+  analytics: {
+    umamiWebsiteId: "" // Paste your Umami website ID here once registered (e.g. "a1b2c3d4-...")
+  },
+
   news: [
     {
       date: "2026-06",
