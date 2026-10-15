@@ -439,18 +439,22 @@
           const msg = data.choices[0].message;
           let reply = msg.content;
           
-          // Clean fallback if model returned reasoning instead of content
+          // Never output internal chain-of-thought analysis
           if (!reply && msg.reasoning) {
-            const paragraphs = msg.reasoning.split(/\n\s*\n/).filter(p => !p.toLowerCase().includes('thinking process') && !p.toLowerCase().includes('analyze user input'));
-            reply = paragraphs.pop() || msg.reasoning;
+            const match = msg.reasoning.match(/(?:Draft|Response|Answer):\s*([^\n][\s\S]*)$/i);
+            if (match) {
+              reply = match[1].trim();
+            }
           }
 
           if (!reply) {
-            reply = "I am ready to help! Please feel free to ask about Pietro's research with Mohsen Kaboli, Andrea Del Prete, or Paolo Rocco.";
+            reply = "Pietro Dardano is a PhD Candidate at BMW AI Robotics and TU Eindhoven, focusing on multimodal perception, tactile sensing, and cognitive vehicles. Feel free to ask about his publications, quadruped RL at Uni-Trento, or cobot testing at PoliMi!";
           }
 
           // Strip any residual thought tags
-          reply = reply.replace(/<thought>[\s\S]*?<\/thought>/gi, '').trim();
+          reply = reply.replace(/<think>[\s\S]*?<\/think>/gi, '')
+                       .replace(/<thought>[\s\S]*?<\/thought>/gi, '')
+                       .trim();
 
           appendMsg('assistant', reply);
           conversation.push({ role: 'assistant', content: reply });
