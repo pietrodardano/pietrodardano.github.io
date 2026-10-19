@@ -64,6 +64,18 @@ window.SITE_DATA = {
 
   news: [
     {
+      date: "2026-10",
+      tag: "Hackathon",
+      icon: "🤖",
+      title: "Finalist at the 2026 Zurich Physical AI Hackathon."
+    },
+    {
+      date: "2026-09",
+      tag: "Hackathon",
+      icon: "🤖",
+      title: "Finalist at Alien Bazaar 2026 Hardware Hackathon in Warsaw."
+    },
+    {
       date: "2026-06",
       tag: "Award",
       icon: "🏆",

@@ -439,16 +439,20 @@
           const msg = data.choices[0].message;
           let reply = msg.content;
           
-          // Never output internal chain-of-thought analysis
+          // If content is empty but model provided reasoning, extract actual final answer
           if (!reply && msg.reasoning) {
-            const match = msg.reasoning.match(/(?:Draft|Response|Answer):\s*([^\n][\s\S]*)$/i);
+            const match = msg.reasoning.match(/(?:Draft|Response|Answer|Conclusion):\s*([^\n][\s\S]*)$/i);
             if (match) {
               reply = match[1].trim();
+            } else {
+              // Fallback to taking the last sentence/paragraph of reasoning
+              const lines = msg.reasoning.trim().split('\n').filter(Boolean);
+              reply = lines[lines.length - 1];
             }
           }
 
           if (!reply) {
-            reply = "Pietro Dardano is a PhD Candidate at BMW AI Robotics and TU Eindhoven, focusing on multimodal perception, tactile sensing, and cognitive vehicles. Feel free to ask about his publications, quadruped RL at Uni-Trento, or cobot testing at PoliMi!";
+            reply = "I couldn't generate a clear answer to that. Please try rephrasing your question.";
           }
 
           // Strip any residual thought tags
@@ -459,7 +463,7 @@
           appendMsg('assistant', reply);
           conversation.push({ role: 'assistant', content: reply });
         } else if (data.error) {
-          appendMsg('assistant', `⚠️ Note from model: ${data.error.message || JSON.stringify(data.error)}`);
+          appendMsg('assistant', `⚠️ ${data.error.message || 'Service temporarily busy. Please try again in a moment.'}`);
         } else {
           appendMsg('assistant', 'Sorry, I could not process your question at the moment.');
         }
