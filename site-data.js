@@ -51,9 +51,13 @@ window.SITE_DATA = {
   chat: {
     enabled: true,
     endpoint: "https://pietro-ai.dardanopietro.workers.dev",
+    hostUrl: "https://pietro-ai.dardanopietro.workers.dev",
+    hostLabel: "Hosted on Cloudflare Workers",
+    trackingUrl: "https://cloud.umami.is",
+    trackingLabel: "Tracked with Umami",
     title: "Pietro's Research AI",
     badge: "Nemotron / OpenRouter",
-    initialGreeting: "Hello! I am Pietro's research assistant. Ask me about his work on multi-modal perception with Mohsen Kaboli, quadruped RL with Andrea Del Prete, or robot control with Paolo Rocco.",
+    initialGreeting: "Hello! I am Pietro's research assistant. Ask me about his work.",
     suggestedPrompts: [
       "PhD research on multi-modal perception with Mohsen Kaboli",
       "Quadruped RL and Sim2Real with Andrea Del Prete",

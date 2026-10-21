@@ -349,9 +349,16 @@
     const sendBtn = document.getElementById('chat-send-btn');
     const titleEl = document.getElementById('chat-title');
     const badgeEl = document.getElementById('chat-badge');
+    const linksEl = document.getElementById('chat-header-links');
 
     if (titleEl && chatConfig.title) titleEl.textContent = chatConfig.title;
     if (badgeEl && chatConfig.badge) badgeEl.textContent = chatConfig.badge;
+    if (linksEl) {
+      linksEl.innerHTML = [
+        chatConfig.hostUrl && chatConfig.hostLabel ? `<a href="${chatConfig.hostUrl}" target="_blank" rel="noopener">${chatConfig.hostLabel}</a>` : '',
+        chatConfig.trackingUrl && chatConfig.trackingLabel ? `<a href="${chatConfig.trackingUrl}" target="_blank" rel="noopener">${chatConfig.trackingLabel}</a>` : ''
+      ].filter(Boolean).join('<span aria-hidden="true"> · </span>');
+    }
 
     const conversation = [];
 

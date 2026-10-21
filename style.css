@@ -735,6 +735,23 @@ footer {
   margin-top: 2px;
 }
 
+.chat-header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.chat-header-links a {
+  color: var(--text-muted);
+}
+
+.chat-header-links a:hover {
+  color: var(--accent);
+}
+
 .chat-close-btn {
   background: transparent;
   border: none;
